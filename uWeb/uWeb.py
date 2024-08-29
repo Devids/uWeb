@@ -170,7 +170,6 @@ class uWeb:
 
     def sendHeaders(self, headers_dict={}):
         # send HTTP headers to client
-        # self.sendStatus(self.OK)
         for key, value in headers_dict.items():
             self.send(b"%s: %s\n" % (key.encode(), value.encode()))
 
@@ -217,7 +216,6 @@ class uWeb:
             self.request_body = self.client_socket.read(int(self.request_headers['Content-Length'])).decode()
             if self.log:
                 print(self.request_body)
-            self.sendStatus(self.OK)
 
     def resolveRequestLine(self):
         # parse request line from client
